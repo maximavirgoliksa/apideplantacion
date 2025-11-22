@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado de Cultivos</title>
+</head>
+<body>
+
+<h2>Provincia seleccionada:</h2>
+<div id="resultado_ubicacion"></div>
+
+<h2>Recomendación de cultivos:</h2>
+<div id="recomendaciones"></div>
+
+<script>
+  // Cambiar por la URL que Render te dé
+  const API_BASE = "https://TU_URL_RENDER";
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const ubicacion = params.get("ubicacion");
+
+    document.getElementById("resultado_ubicacion").innerText = ubicacion;
+
+    const resp = await fetch(`${API_BASE}/api/recomendaciones?ubicacion=${encodeURIComponent(ubicacion)}`);
+
+    if (resp.ok) {
+      const json = await resp.json();
+      document.getElementById("recomendaciones").innerText = json.recomendacion.cultivos;
+    } else {
+      document.getElementById("recomendaciones").innerText = "Provincia no encontrada.";
+    }
+  });
+</script>
+
+</body>
+</html>
