@@ -1,0 +1,71 @@
+{
+  "Buenos Aires": {
+    "cultivos": "Trigo, soja, girasol, sorgo, mijo, maíz, avena, cebada y centeno."
+  },
+  "Catamarca": {
+    "cultivos": "Soja predominante, trigo y maíz."
+  },
+  "Chaco": {
+    "cultivos": "Soja, algodón, girasol, maíz, cultivos forestales."
+  },
+  "Chubut": {
+    "cultivos": "Papa, cebolla, zanahoria, tomate, morrón, zapallo, berenjena."
+  },
+  "Córdoba": {
+    "cultivos": "Soja, maíz, trigo, girasol, maní, sorgo, papa y batata."
+  },
+  "Corrientes": {
+    "cultivos": "Cítricos, tabaco, arroz, yerba mate, té, algodón."
+  },
+  "Entre Ríos": {
+    "cultivos": "Trigo, soja, maíz, avena, cebada, girasol, sorgo."
+  },
+  "Formosa": {
+    "cultivos": "Soja, maíz y trigo."
+  },
+  "Jujuy": {
+    "cultivos": "Quínoa, amaranto, papas andinas, maíces y porotos."
+  },
+  "La Pampa": {
+    "cultivos": "Trigo, maíz, soja, girasol."
+  },
+  "La Rioja": {
+    "cultivos": "Vid, cereales, trigo y cebada."
+  },
+  "Mendoza": {
+    "cultivos": "Ajo, papa, zapallo, tomate, zanahoria, lechuga y maíz dulce."
+  },
+  "Misiones": {
+    "cultivos": "Yerba mate, té y tabaco."
+  },
+  "Neuquén": {
+    "cultivos": "Manzanas, peras, frutos secos y frutas finas."
+  },
+  "Rio Negro": {
+    "cultivos": "Manzanas, peras, tomate, cebolla y frutas finas."
+  },
+  "Salta": {
+    "cultivos": "Porotos, maíz, soja, garbanzo, cítricos, tabaco."
+  },
+  "San Juan": {
+    "cultivos": "Uva, tomate, cebolla, ajo, melón, sandía."
+  },
+  "San Luis": {
+    "cultivos": "Soja y oleaginosas."
+  },
+  "Santa Cruz": {
+    "cultivos": "Frutales, hortícolas y forrajeros."
+  },
+  "Santa Fe": {
+    "cultivos": "Maíz, soja, sorgo, trigo, girasol, arroz y algodón."
+  },
+  "Santiago del Estero": {
+    "cultivos": "Soja, maíz, girasol y algodón."
+  },
+  "Tierra del Fuego": {
+    "cultivos": "Lechuga, acelga, espinaca, rúcula y aromáticas."
+  },
+  "Tucumán": {
+    "cultivos": "Caña de azúcar, limón, arándanos, frutilla, soja, maíz."
+  }
+}
