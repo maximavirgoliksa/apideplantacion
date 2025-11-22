@@ -1,36 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Resultado de Cultivos</title>
+  <title>Buscador Público de Cultivos</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 700px; }
+    input { padding: 8px; width: 280px; }
+    button { padding: 8px 12px; margin-left: 6px; }
+    #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; display: none; }
+  </style>
 </head>
 <body>
+  <h1>API Pública – Recomendaciones por Provincia</h1>
 
-<h2>Provincia seleccionada:</h2>
-<div id="resultado_ubicacion"></div>
+  <input id="prov" type="text" placeholder="Ej: San Juan, Buenos Aires">
+  <button onclick="buscar()">Buscar</button>
+  <button id="btnExport" onclick="descargar()" disabled>Descargar Excel</button>
 
-<h2>Recomendación de cultivos:</h2>
-<div id="recomendaciones"></div>
+  <div id="result">
+    <h3 id="r-prov"></h3>
+    <p id="r-text"></p>
+  </div>
 
 <script>
-  // Cambiar por la URL que Render te dé
-  const API_BASE = "https://apideplantacion.onrender.com/";
+const API = "/api/public";
 
-  document.addEventListener("DOMContentLoaded", async () => {
-    const params = new URLSearchParams(window.location.search);
-    const ubicacion = params.get("ubicacion");
+async function buscar(){
+  const p = document.getElementById("prov").value.trim();
+  if (!p) return alert("Ingresá una provincia.");
 
-    document.getElementById("resultado_ubicacion").innerText = ubicacion;
+  const res = await fetch(`${API}/recomendaciones?ubicacion=${encodeURIComponent(p)}`);
+  const box = document.getElementById("result");
+  const prov = document.getElementById("r-prov");
+  const text = document.getElementById("r-text");
+  const btn = document.getElementById("btnExport");
 
-    const resp = await fetch(`${API_BASE}/api/recomendaciones?ubicacion=${encodeURIComponent(ubicacion)}`);
+  if (!res.ok){
+    prov.innerText = "Error";
+    text.innerText = "Provincia no encontrada.";
+    box.style.display = "block";
+    btn.disabled = true;
+    return;
+  }
 
-    if (resp.ok) {
-      const json = await resp.json();
-      document.getElementById("recomendaciones").innerText = json.recomendacion.cultivos;
-    } else {
-      document.getElementById("recomendaciones").innerText = "Provincia no encontrada.";
-    }
-  });
+  const json = await res.json();
+  prov.innerText = json.provincia;
+  text.innerText = json.recomendacion.cultivos;
+  box.style.display = "block";
+
+  btn.disabled = false;
+  btn.dataset.prov = json.provincia;
+}
+
+function descargar(){
+  const prov = document.getElementById("btnExport").dataset.prov;
+  window.location.href = `${API}/recomendaciones/export?ubicacion=${encodeURIComponent(prov)}`;
+}
 </script>
 
 </body>
